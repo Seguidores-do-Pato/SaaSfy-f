@@ -10,7 +10,7 @@ const Cart = () => {
 
     return (
         <Sheet>
-            <SheetTrigger className="group -m-2 flex items-center p-2">
+            <SheetTrigger className="group -m-2 flex items-center p-1">
                 <Button variant="ghost" className="flex-shrink-0">
                     <ShoppingCart className="h-6 w-6" />
                     <span className="ml-2 text-sm font-medium">0</span>

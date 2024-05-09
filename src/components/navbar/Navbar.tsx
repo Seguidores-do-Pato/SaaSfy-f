@@ -5,6 +5,7 @@ import Cart from '../Cart';
 import { useAuth } from '@/contexts/auth-context';
 import { buttonVariants } from '../ui/button';
 import { ToggleTheme } from '../ToggleTheme';
+import NavMenu from './NavMenu';
 
 const Narbar = () => {
     const { User } = useAuth();
@@ -18,6 +19,10 @@ const Narbar = () => {
                                 <Link to="/">
                                     <Icons.logo className="w-10 h-10" fill="#7C3AED" />
                                 </Link>
+                            </div>
+
+                            <div className="hidden z-50 lg:ml-8 lg:block lg:self-center">
+                                <NavMenu />
                             </div>
 
                             <div className="ml-auto flex items-center">
