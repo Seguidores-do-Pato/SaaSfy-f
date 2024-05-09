@@ -10,25 +10,6 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger
 } from '@/components/ui/navigation-menu';
-import { Icons } from '../Icons';
-
-const components: { title: string; href: string; description: string }[] = [
-    {
-        title: 'Destaques',
-        href: '/products',
-        description: 'Descubra nossos destaques e encontre as últimas adições à nossa coleção.'
-    },
-    {
-        title: 'Recém-incluidos',
-        href: '/products',
-        description: 'Explore os produtos recém-incluídos para ficar por dentro das novidades.'
-    },
-    {
-        title: 'Mais vendidos',
-        href: '/products',
-        description: 'Encontre os itens mais vendidos e populares em nossa seleção.'
-    }
-];
 
 const NavMenu = () => {
     return (
