@@ -6,7 +6,7 @@ import Cookie from 'js-cookie';
 import { TSignIn } from '@/lib/validators';
 
 interface AuthContextProps {
-    user: User | null;
+    User: User | null;
     SignIn: (email: string, password: string) => Promise<void>;
     SignOut: () => Promise<void>;
     SignUp: (props: TSignIn) => Promise<void>;
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
 
     const AuthContextData = {
-        user: user,
+        User: user,
         SignIn: SignIn,
         SignOut: SignOut,
         SignUp: SignUp
