@@ -17,7 +17,7 @@ const Narbar = () => {
                         <div className="flex h-16 items-center">
                             <div className="ml-4 flex lg:ml-0">
                                 <Link to="/">
-                                    <Icons.logo className="w-10 h-10" fill="#7C3AED" />
+                                    <Icons.logo className="w-10 h-10" />
                                 </Link>
                             </div>
 
@@ -42,7 +42,7 @@ const Narbar = () => {
 
                                     {/* Login button section */}
                                     {User ? null : (
-                                        <Link to="sign-in" className={buttonVariants({ variant: 'ghost' })}>
+                                        <Link to="/sign-in" className={buttonVariants({ variant: 'ghost' })}>
                                             Entrar
                                         </Link>
                                     )}
