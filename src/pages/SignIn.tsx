@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 
 const SignInPage = () => {
     const {
@@ -18,6 +19,8 @@ const SignInPage = () => {
         handleSubmit,
         formState: { errors }
     } = useForm<TSignIn>({ resolver: zodResolver(loginValidator) });
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const { SignIn } = useAuth();
 
@@ -27,6 +30,8 @@ const SignInPage = () => {
 
     const onSubmit = (props: TSignIn) => {
         const { email, password } = props;
+
+        setIsLoading(true);
 
         SignIn(email, password)
             .then(() => {
@@ -90,9 +95,15 @@ const SignInPage = () => {
                                 />
                                 {errors?.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
                             </div>
-                            <Button>
-                                <LogInIcon className="mr-2 h-5 w-5" />
-                                Entrar
+                            <Button disabled={isLoading}>
+                                {isLoading ? (
+                                    <Icons.spinner className="mr-2 h-5 w-5 animate-spin" />
+                                ) : (
+                                    <>
+                                        <LogInIcon className="mr-2 h-5 w-5" />
+                                        Entrar
+                                    </>
+                                )}
                             </Button>
                         </div>
                     </form>
@@ -104,9 +115,15 @@ const SignInPage = () => {
                             <span className="bg-background mx-auto px-2 text-muted-foreground bg-gray-100 dark:bg-gray-900">or</span>
                         </div>
                     </div>
-                    <Button variant="outline">
-                        <Icons.gitHub className="mr-2 h-5 w-5" />
-                        Github
+                    <Button variant="outline" disabled={isLoading}>
+                        {isLoading ? (
+                            <Icons.spinner className="mr-2 h-5 w-5 animate-spin" />
+                        ) : (
+                            <>
+                                <Icons.gitHub className="mr-2 h-5 w-5" />
+                                Github
+                            </>
+                        )}
                     </Button>
                 </div>
             </div>
