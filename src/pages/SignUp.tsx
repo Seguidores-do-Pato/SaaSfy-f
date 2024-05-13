@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/auth-context';
 import { cn } from '@/lib/utils';
-import { TSignIn, loginValidator } from '@/lib/validators';
+import { TSignUp, registerValidator } from '@/lib/validators';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight, LogInIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -13,29 +13,27 @@ import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
 import { useEffect, useState } from 'react';
 
-const SignInPage = () => {
+const SignUpPage = () => {
     const {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<TSignIn>({ resolver: zodResolver(loginValidator) });
+    } = useForm<TSignUp>({ resolver: zodResolver(registerValidator) });
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const { User, SignIn } = useAuth();
+    const { User, SignUp } = useAuth();
 
     const router = useNavigate();
 
     const { toast } = useToast();
 
-    const onSubmit = (props: TSignIn) => {
-        const { email, password } = props;
-
+    const onSubmit = (props: TSignUp) => {
         setIsLoading(true);
 
-        SignIn(email, password)
+        SignUp(props)
             .then(() => {
-                router('/');
+                router('/sign-in');
                 window.location.reload();
             })
             .catch(err => {
@@ -67,10 +65,10 @@ const SignInPage = () => {
 
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] bg-gray-100 dark:bg-gray-900 p-4 rounded">
                 <div className="flex flex-col items-center space-y-2 text-center">
-                    <h1 className="text-2xl font-bold">Iniciar Sessão</h1>
+                    <h1 className="text-2xl font-bold">Criar Conta</h1>
 
-                    <Link to="/sign-up" className={buttonVariants({ variant: 'link', className: 'gap-1.5' })}>
-                        Novo por aqui? Registre-se agora!
+                    <Link to="/sign-in" className={buttonVariants({ variant: 'link', className: 'gap-1.5' })}>
+                        Já tem uma conta? Faça login agora!
                         <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>
@@ -86,6 +84,18 @@ const SignInPage = () => {
                                         'focus-visible:ring-red-500': errors.email
                                     })}
                                     placeholder="you@exemple.com"
+                                />
+                                {errors?.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
+                            </div>
+                            {/* name field */}
+                            <div className="grid gap-1 py-2">
+                                <Label htmlFor="name">Nome completo</Label>
+                                <Input
+                                    {...register('name')}
+                                    className={cn({
+                                        'focus-visible:ring-red-500': errors.email
+                                    })}
+                                    placeholder="Seu nome completo"
                                 />
                                 {errors?.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
                             </div>
@@ -138,4 +148,4 @@ const SignInPage = () => {
     );
 };
 
-export default SignInPage;
+export default SignUpPage;

@@ -1,7 +1,8 @@
-export interface User {
+interface Product {
     readonly _id: string;
-    email: string;
     name: string;
+    owner: string;
+    price: number;
     createdAt: Date;
     updatedAt: Date;
 }

@@ -6,6 +6,7 @@ import { useAuth } from '@/contexts/auth-context';
 import { buttonVariants } from '../ui/button';
 import { ToggleTheme } from '../ToggleTheme';
 import NavMenu from './NavMenu';
+import NavAccount from './NavAccount';
 
 const Narbar = () => {
     const { User } = useAuth();
@@ -51,7 +52,7 @@ const Narbar = () => {
                                     {/* account section (actions login or register) */}
                                     {User ? (
                                         <>
-                                            <p>oi</p>
+                                            <NavAccount />
                                         </>
                                     ) : (
                                         <Link to="/sign-up" className={buttonVariants({ variant: 'ghost' })}>
