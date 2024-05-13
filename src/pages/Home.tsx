@@ -1,4 +1,5 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import ProductReel from '@/components/products/ProductReel';
 import { buttonVariants } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
+            <ProductReel title="Recém-Incluídos" href="/products" />
         </MaxWidthWrapper>
     );
 };
