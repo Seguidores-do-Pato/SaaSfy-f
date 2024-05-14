@@ -11,10 +11,10 @@ interface ProductReelProps {
 const ProductReel = (props: ProductReelProps) => {
     const { title, subtitle, href } = props;
 
-    const { data, isLoading, error } = useAPI<Product[]>('http://localhost:8000/api/product');
+    const { data, isLoading } = useAPI<Product[]>('http://localhost:8000/api/product');
 
     return (
-        <section className="py-12">
+        <section className="py-12 container">
             <div className="md:flex md:items-center md:justify-between mb-4">
                 <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
                     {title ? <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">{title}</h1> : null}

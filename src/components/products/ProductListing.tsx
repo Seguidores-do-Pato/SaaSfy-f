@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductPlaceholder from './ProductPlaceholder';
 import { Link } from 'react-router-dom';
 import { cn, formatPrice } from '@/lib/utils';
@@ -40,8 +40,6 @@ const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
             </Link>
         );
     }
-
-    return <div>ProductListing</div>;
 };
 
 export default ProductListing;
