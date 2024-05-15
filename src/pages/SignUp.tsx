@@ -47,6 +47,7 @@ const SignUpPage = () => {
     };
 
     useEffect(() => {
+        document.title = 'SaaSfy - Registrar';
         if (User) {
             router('/');
         }
@@ -63,7 +64,7 @@ const SignUpPage = () => {
                 </Link>
             </div>
 
-            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] bg-gray-100 dark:bg-gray-900 p-4 rounded">
+            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px] bg-gray-100 dark:bg-gray-900 p-6 rounded">
                 <div className="flex flex-col items-center space-y-2 text-center">
                     <h1 className="text-2xl font-bold">Criar Conta</h1>
 
@@ -118,10 +119,14 @@ const SignUpPage = () => {
                                 ) : (
                                     <>
                                         <LogInIcon className="mr-2 h-5 w-5" />
-                                        Entrar
+                                        Continuar
                                     </>
                                 )}
                             </Button>
+                            <p className="text-muted-foreground text-center justify-center text-sm">
+                                Ao clicar em continuar, você está de acordo com nosso <span className="underline">Termos de Serviço</span> e{' '}
+                                <span className="underline">Politica de Privacidade.</span>
+                            </p>
                         </div>
                     </form>
                     <div className="relative">

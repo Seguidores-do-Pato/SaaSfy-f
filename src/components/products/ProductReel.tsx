@@ -22,7 +22,7 @@ const ProductReel = (props: ProductReelProps) => {
                 </div>
 
                 {href ? (
-                    <Link to={href} className="hidden text-sm font-medium text-primary hover:opacity-85 md:block">
+                    <Link to={href} className="hidden text-sm font-medium text-primary hover:underline md:block">
                         Explore agora <span aria-hidden="true">&rarr;</span>
                     </Link>
                 ) : null}

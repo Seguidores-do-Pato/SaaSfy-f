@@ -1,9 +1,13 @@
 import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import ProductReel from '@/components/products/ProductReel';
 import { buttonVariants } from '@/components/ui/button';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+    useEffect(() => {
+        document.title = 'SaaSfy';
+    }, []);
     return (
         <>
             <MaxWidthWrapper>

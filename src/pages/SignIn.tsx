@@ -49,6 +49,7 @@ const SignInPage = () => {
     };
 
     useEffect(() => {
+        document.title = 'SaaSfy - Entrar';
         if (User) {
             router('/');
         }
@@ -65,7 +66,7 @@ const SignInPage = () => {
                 </Link>
             </div>
 
-            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px] bg-gray-100 dark:bg-gray-900 p-4 rounded">
+            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[400px] bg-gray-100 dark:bg-gray-900 p-6 rounded">
                 <div className="flex flex-col items-center space-y-2 text-center">
                     <h1 className="text-2xl font-bold">Iniciar Sessão</h1>
 

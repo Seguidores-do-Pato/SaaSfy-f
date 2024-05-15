@@ -1,5 +1,5 @@
 import {} from '@radix-ui/react-dropdown-menu';
-import { LayoutDashboardIcon, LogOutIcon } from 'lucide-react';
+import { LayoutDashboardIcon, LogOutIcon, User2Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { useAuth } from '@/contexts/auth-context';
@@ -35,6 +35,12 @@ const NavAccount = () => {
                     </div>
                 </div>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                    <div className="flex flex-row items-center gap-2 cursor-pointer">
+                        <User2Icon className="h-4 w-4 " />
+                        <Link to="/profile">Profile</Link>
+                    </div>
+                </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                     <div className="flex flex-row items-center gap-2 cursor-pointer">
                         <LayoutDashboardIcon className="h-4 w-4 " />
