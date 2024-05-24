@@ -2,7 +2,8 @@ interface Product {
     readonly _id: string;
     name: string;
     owner: string;
-    price: number;
+    version: string;
+    description: string;
     createdAt: Date;
     updatedAt: Date;
 }

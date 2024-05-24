@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import ProductListing from './ProductListing';
 
 interface ProductReelProps {
-    title: string;
+    title?: string;
     subtitle?: string;
-    href: string;
+    href?: string;
 }
 
 const ProductReel = (props: ProductReelProps) => {
     const { title, subtitle, href } = props;
 
-    const { data, isLoading } = useAPI<Product[]>('http://localhost:8000/api/product');
+    const { data, isLoading } = useAPI<Product[]>('http://localhost:8000/api/product?limit=4');
 
     return (
         <section className="py-12 container">
