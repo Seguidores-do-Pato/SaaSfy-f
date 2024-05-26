@@ -17,8 +17,9 @@ const Narbar = () => {
                     <div className="border-b border-gray-200 dark:border-gray-800">
                         <div className="flex h-16 items-center">
                             <div className="ml-4 flex lg:ml-0">
-                                <Link to="/">
+                                <Link to="/" className="flex items-center gap-2">
                                     <Icons.logo className="w-10 h-10" />
+                                    <h2 className="text-xl font-semibold underline">SaaSfy</h2>
                                 </Link>
                             </div>
 

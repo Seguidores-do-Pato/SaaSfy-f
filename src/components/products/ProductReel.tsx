@@ -1,6 +1,7 @@
 import { useAPI } from '@/hooks/useAPI';
 import { Link } from 'react-router-dom';
 import ProductListing from './ProductListing';
+import { BASE_URL } from '@/config/api-urls';
 
 interface ProductReelProps {
     title?: string;
@@ -11,13 +12,13 @@ interface ProductReelProps {
 const ProductReel = (props: ProductReelProps) => {
     const { title, subtitle, href } = props;
 
-    const { data, isLoading } = useAPI<Product[]>('http://localhost:8000/api/product?limit=4');
+    const { data, isLoading } = useAPI<Product[]>(`${BASE_URL}/api/product?limit=4`);
 
     return (
         <section className="py-12 container">
             <div className="md:flex md:items-center md:justify-between mb-4">
                 <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
-                    {title ? <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">{title}</h1> : null}
+                    {title ? <h1 className="text-xl font-bold text-gray-900 dark:text-white sm:text-3xl">{title}</h1> : null}
                     {subtitle ? <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p> : null}
                 </div>
 
