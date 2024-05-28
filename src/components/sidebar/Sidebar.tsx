@@ -3,14 +3,9 @@ import { Home, Package, Settings } from 'lucide-react';
 import { Tooltip, TooltipTrigger, TooltipContent } from '../ui/tooltip';
 import { Icons } from '../Icons';
 
-interface SidebarProps {
-    id: string;
-}
-
-const Sidebar = (props: SidebarProps) => {
-    const { id } = props;
+const Sidebar = () => {
     return (
-        <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
+        <aside className="hidden w-14 flex-col border-r bg-background sm:flex">
             <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
                 <Link
                     to="/"
@@ -48,7 +43,7 @@ const Sidebar = (props: SidebarProps) => {
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Link
-                            to={`/${id}/settings`}
+                            to="/profile"
                             className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                         >
                             <Settings className="h-5 w-5" />

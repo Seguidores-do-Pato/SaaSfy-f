@@ -1,16 +1,15 @@
+import Cards from '@/components/dashboard/Cards';
 import Sidebar from '@/components/sidebar/Sidebar';
+
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { useAuth } from '@/contexts/auth-context';
 
 const Dashboard = () => {
-    const { User } = useAuth();
-
     return (
-        <div className="flex min-h-screen w-full flex-col">
+        <div className="flex min-h-screen w-full flex-row">
             <TooltipProvider>
-                <Sidebar id={User!._id} />
+                <Sidebar />
             </TooltipProvider>
-            <p className="px-24 py-5">aaa</p>
+            <Cards />
         </div>
     );
 };

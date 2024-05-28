@@ -18,8 +18,8 @@ const editForm = ({ User }: editFormProps) => {
             <p className="text-muted-foreground py-2">Atualize as informações do seu perfil.</p>
             <Separator className="my-4" />
             <Label className="text-base">Nome</Label>
-            <div className="flex items-center my-2 gap-3">
-                <Input value={User?.name} disabled={disabled} />
+            <div className="flex items-center my-2 gap-3 w-3/5">
+                <Input defaultValue={User?.name} disabled={disabled} />
 
                 {!disabled ? (
                     <>
