@@ -7,6 +7,7 @@ import SignUpPage from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Products from './pages/Products';
+import MyProducts from './pages/MyProducts';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ function App() {
 
             <Route path="/sell" element={<PrivateRoutes />}>
                 <Route index element={<Dashboard />} />
+                <Route path="/sell/my-products" element={<MyProducts />} />
             </Route>
         </Routes>
     );

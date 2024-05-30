@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Home, Package, Settings } from 'lucide-react';
 import { Tooltip, TooltipTrigger, TooltipContent } from '../ui/tooltip';
 import { Icons } from '../Icons';
+import { cn } from '@/lib/utils';
 
 const Sidebar = () => {
+    const currentLocation = useLocation();
     return (
         <aside className="hidden w-14 flex-col border-r bg-background sm:flex">
             <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -18,7 +20,10 @@ const Sidebar = () => {
                     <TooltipTrigger asChild>
                         <Link
                             to="/sell"
-                            className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                            className={cn(
+                                'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                                currentLocation.pathname === '/sell' ? 'text-primary' : null
+                            )}
                         >
                             <Home className="h-5 w-5" />
                             <span className="sr-only">Dashboard</span>
@@ -30,7 +35,10 @@ const Sidebar = () => {
                     <TooltipTrigger asChild>
                         <Link
                             to="/sell/my-products"
-                            className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                            className={cn(
+                                'flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
+                                currentLocation.pathname === '/sell/my-products' ? 'text-primary' : null
+                            )}
                         >
                             <Package className="h-5 w-5" />
                             <span className="sr-only">Meus produtos</span>
