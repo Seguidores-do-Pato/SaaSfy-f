@@ -5,6 +5,7 @@ interface Product {
     description: string;
     owner: string;
     price: number;
+    images: string[];
     category: string;
     available: boolean;
     features: string[];

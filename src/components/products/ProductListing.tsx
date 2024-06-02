@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductPlaceholder from './ProductPlaceholder';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
-import { Separator } from '../ui/separator';
-import { Button } from '../ui/button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { cn, formatPrice } from '@/lib/utils';
 import ImageSlider from './ImageSlider';
 
@@ -16,7 +13,6 @@ interface ProductListingProps {
 const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
-    const router = useNavigate();
     const urls = ['/software.png', '/software.png'];
 
     useEffect(() => {
