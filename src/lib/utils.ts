@@ -39,3 +39,14 @@ export const imageToBase64 = (file: File): Promise<string> => {
         reader.readAsDataURL(file);
     });
 };
+
+export function base64ToImageUrl(base64String: string): string {
+    const byteCharacters = atob(base64String);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'image/png' });
+    return URL.createObjectURL(blob);
+}
