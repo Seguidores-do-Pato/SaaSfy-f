@@ -24,10 +24,8 @@ const Home = () => {
                         </Link>
                     </div>
                 </div>
+                <ProductReel title="Recém-Incluídos" href="/products" subtitle="Explore o melhor que o SaaSfy ofecere" />
             </MaxWidthWrapper>
-            <section className="border-t bg-gray-50 border-gray-200 dark:bg-gray-900 dark:border-black h-full">
-                <ProductReel title="Recém-Incluídos" href="/products" />
-            </section>
         </>
     );
 };
