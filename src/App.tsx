@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Products from './pages/Products';
 import MyProducts from './pages/MyProducts';
 import Product from './pages/Product';
+import Checkout from './pages/Checkout';
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 }
             >
                 <Route index element={<Home />} />
+                <Route path="/cart" element={<Checkout />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<Product />} />
                 <Route path="/profile" element={<PrivateRoutes />}>

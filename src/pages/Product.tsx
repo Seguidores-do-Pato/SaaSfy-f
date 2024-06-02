@@ -72,7 +72,7 @@ const Product = () => {
                             </div>
 
                             <div className="mt-6 flex items-center">
-                                <Check aria-hidden="true" className="h-5 w-5 flex-shrink-0 text-green-500" />
+                                <Check aria-hidden="true" className="h-5 w-5 flex-shrink-0 text-primary" />
                                 <p className="ml-2 text-sm text-muted-foreground">Atende aos critérios estabelecidos para a nossa excelência!</p>
                             </div>
                         </section>
