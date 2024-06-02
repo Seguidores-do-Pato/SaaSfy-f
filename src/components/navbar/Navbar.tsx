@@ -11,10 +11,10 @@ import NavAccount from './NavAccount';
 const Narbar = () => {
     const { User } = useAuth();
     return (
-        <div className="sticky z-50 h-14 inset-x-0 top-0 w-full">
+        <div className="sticky z-50 h-14 inset-x-0 top-0 w-full ">
             <header className="relative">
                 <MaxWidthWrapper>
-                    <div className="border-b border-gray-200 dark:border-gray-800">
+                    <div className="border-b border-gray-200 dark:border-gray-800 bg-background">
                         <div className="flex h-16 items-center">
                             <div className="ml-4 flex lg:ml-0">
                                 <Link to="/" className="flex items-center gap-2">

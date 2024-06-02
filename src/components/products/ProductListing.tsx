@@ -3,7 +3,9 @@ import ProductPlaceholder from './ProductPlaceholder';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import { Separator } from '../ui/separator';
 import { Button } from '../ui/button';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { cn, formatPrice } from '@/lib/utils';
+import ImageSlider from './ImageSlider';
 
 interface ProductListingProps {
     product: Product | null;
@@ -15,6 +17,7 @@ const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     const router = useNavigate();
+    const urls = ['/software.png', '/software.png'];
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -30,21 +33,20 @@ const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
 
     if (isVisible && product) {
         return (
-            <Card>
-                <CardHeader className="space-y-2">
-                    <CardTitle className="text-gray-900 dark:text-white">{product.name}</CardTitle>
-                    <CardDescription className="text-muted-foreground text-sm">{product.version}</CardDescription>
-                    <Separator />
-                </CardHeader>
-                <CardContent>
-                    <CardDescription>{product.description}</CardDescription>
-                </CardContent>
-                <CardFooter>
-                    <Button className="w-full" onClick={() => router(`/products/${product._id}`)}>
-                        Veja mais
-                    </Button>
-                </CardFooter>
-            </Card>
+            <Link
+                className={cn('invisible h-full w-full cursor-pointer group/main', {
+                    'visible animate-in fade-in-5': isVisible
+                })}
+                to={`/product/${product._id}`}
+            >
+                <div className="flex flex-col w-full">
+                    <ImageSlider urls={urls} />
+
+                    <h3 className="mt-4 font-semibold text-base ">{product.name}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{product.category}</p>
+                    <p className="mt-1 font-medium text-sm ">{formatPrice(product.price)}</p>
+                </div>
+            </Link>
         );
     }
 };

@@ -1,3 +1,4 @@
+import ProductArea from '@/components/dashboard/ProductArea';
 import Sidebar from '@/components/sidebar/Sidebar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
@@ -7,6 +8,7 @@ const MyProducts = () => {
             <TooltipProvider>
                 <Sidebar />
             </TooltipProvider>
+            <ProductArea />
         </div>
     );
 };

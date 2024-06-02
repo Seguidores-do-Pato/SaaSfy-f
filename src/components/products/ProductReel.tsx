@@ -15,10 +15,10 @@ const ProductReel = (props: ProductReelProps) => {
     const { data, isLoading } = useAPI<Product[]>(`${BASE_URL}/api/product?limit=4`);
 
     return (
-        <section className="py-12 container">
+        <section className="py-12 px-4">
             <div className="md:flex md:items-center md:justify-between mb-4">
                 <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">
-                    {title ? <h1 className="text-xl font-bold text-gray-900 dark:text-white sm:text-3xl">{title}</h1> : null}
+                    {title ? <h1 className="text-2xl font-bold sm:text-3xl">{title}</h1> : null}
                     {subtitle ? <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p> : null}
                 </div>
 
