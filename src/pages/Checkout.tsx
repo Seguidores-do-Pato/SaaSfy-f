@@ -74,7 +74,7 @@ const Page = () => {
                                                         </div>
 
                                                         <div className="mt-1 flex text-sm">
-                                                            <p className="text-muted-foreground">Category: {product.category}</p>
+                                                            <p className="text-muted-foreground">{product.category}</p>
                                                         </div>
 
                                                         <p className="mt-1 text-sm font-medium text-gray-900 dark:text-white">

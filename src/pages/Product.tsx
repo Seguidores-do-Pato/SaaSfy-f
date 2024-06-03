@@ -38,7 +38,10 @@ const Product = () => {
                             {BREADCRUMBS.map((breadcrumb, i) => (
                                 <li key={breadcrumb.href}>
                                     <div className="flex items-center text-sm">
-                                        <Link to={breadcrumb.href} className="font-medium text-sm text-muted-foreground hover:text-gray-900">
+                                        <Link
+                                            to={breadcrumb.href}
+                                            className="font-medium text-sm text-muted-foreground hover:text-gray-900 hover:dark:text-white"
+                                        >
                                             {breadcrumb.name}
                                         </Link>
                                         {i !== BREADCRUMBS.length - 1 ? (
