@@ -3,16 +3,12 @@ import { useCart } from '@/hooks/useCart';
 import { cn, formatPrice } from '@/lib/utils';
 import { Check, Loader2, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Page = () => {
     const { items, removeItem } = useCart();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
-
-    const router = useNavigate();
-
-    const productIds = items.map(({ product }) => product._id);
 
     const [isMounted, setIsMounted] = useState<boolean>(false);
     useEffect(() => {
