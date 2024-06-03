@@ -1,17 +1,17 @@
 import { z } from 'zod';
 
 export const loginValidator = z.object({
-    email: z.string().email(),
-    password: z.string().min(3)
+    email: z.string().email({ message: 'Email inválido.' }),
+    password: z.string().min(3, { message: 'A senha deve conter pelo menos 3 caracteres.' })
 });
 
 export const registerValidator = z.object({
-    email: z.string().email(),
+    email: z.string().email({ message: 'Email inválido.' }),
     password: z.string().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/, {
         message:
-            'Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long'
+            'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número, um caractere especial e ter pelo menos 8 caracteres'
     }),
-    name: z.string().min(3)
+    name: z.string().min(3, { message: 'O nome deve ter pelo menos 3 caracteres.' })
 });
 
 export type TSignUp = z.infer<typeof registerValidator>;
