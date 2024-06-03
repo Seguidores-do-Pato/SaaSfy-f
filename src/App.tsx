@@ -10,6 +10,7 @@ import Products from './pages/Products';
 import MyProducts from './pages/MyProducts';
 import Product from './pages/Product';
 import Checkout from './pages/Checkout';
+import Footer from './components/Footer';
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <>
                         <Narbar />
                         <Outlet />
+                        <Footer />
                     </>
                 }
             >
