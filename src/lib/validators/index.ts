@@ -14,5 +14,20 @@ export const registerValidator = z.object({
     name: z.string().min(3, { message: 'O nome deve ter pelo menos 3 caracteres.' })
 });
 
+export const createProductValidator = z.object({
+    name: z.string().min(1, { message: 'O nome deve ter pelo menos 1 caracter.' }),
+    version: z.string().default('1.0.0'),
+    description: z
+        .string()
+        .min(15, { message: 'A descrição deve ter pelo menos 15 caracteres.' })
+        .max(255, { message: 'Permitido apenas 255 caracteres.' }),
+    owner: z.string(),
+    price: z.number().default(1),
+    category: z.string().default('Automation'),
+    available: z.boolean().default(false),
+    features: z.string().array().optional()
+});
+
+export type TcreateProduct = z.infer<typeof createProductValidator>;
 export type TSignUp = z.infer<typeof registerValidator>;
 export type TSignIn = z.infer<typeof loginValidator>;

@@ -43,6 +43,7 @@ const SignUpPage = () => {
                     title: 'Email ou Senha inválidos',
                     description: 'Por favor, tente novamente.'
                 });
+                setIsLoading(false);
             });
     };
 

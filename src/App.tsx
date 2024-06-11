@@ -11,6 +11,7 @@ import MyProducts from './pages/MyProducts';
 import Product from './pages/Product';
 import Checkout from './pages/Checkout';
 import Footer from './components/Footer';
+import CreateProducts from './pages/CreateProducts'
 
 function App() {
     return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/sell" element={<PrivateRoutes />}>
                 <Route index element={<Dashboard />} />
                 <Route path="/sell/my-products" element={<MyProducts />} />
+                <Route path="/sell/my-products/create" element={<CreateProducts/>} />
             </Route>
         </Routes>
     );

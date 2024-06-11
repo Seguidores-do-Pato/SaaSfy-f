@@ -1,6 +1,5 @@
 import { api } from './api';
 
-//ISSO NAO TA PRONTO, FAVOR, NAO USAR
 export async function imageReader(imageBase64: string) {
     try {
         const { data } = await api.post(

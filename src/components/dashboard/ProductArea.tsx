@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from '../ui/button';
 import { useAPI } from '@/hooks/useAPI';
 import { BASE_URL } from '@/config/api-urls';
@@ -21,7 +20,11 @@ const ProductArea = () => {
                     <Plus className="w-4 h-4" />
                 </Button>
             </div>
-            <div className={cn('rounded-lg border border-dashed shadow-sm', { 'items-center justify-center': !data })}>
+            <div
+                className={cn('rounded-lg border border-dashed shadow-sm', {
+                    'flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6': !data
+                })}
+            >
                 {data ? (
                     <Table>
                         <TableHeader>
@@ -43,10 +46,14 @@ const ProductArea = () => {
                         </TableBody>
                     </Table>
                 ) : (
-                    <div className="flex flex-col items-center gap-1 text-center">
-                        <h3 className="text-2xl font-bold tracking-tight">Você não tem produtos cadastrados</h3>
-                        <p className="text-sm text-muted-foreground">Você pode começar a vender assim que criar seu primeiro produto.</p>
-                        <Button className="mt-4">Criar produto</Button>
+                    <div className="flex flex-1 items-center justify-center">
+                        <div className="flex flex-col items-center gap-1 text-center">
+                            <h3 className="text-2xl font-bold tracking-tight">Você não tem produtos cadastrados</h3>
+                            <p className="text-sm text-muted-foreground">Você pode começar a vender assim que criar seu primeiro produto.</p>
+                            <Button className="mt-4" onClick={() => router('/sell/my-products/create')}>
+                                Criar produto
+                            </Button>
+                        </div>
                     </div>
                 )}
             </div>

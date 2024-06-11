@@ -1,21 +1,23 @@
-import ProductArea from '@/components/dashboard/ProductArea';
+import MaxWidthWrapper from '@/components/MaxWidthWrapper';
+import CreateProductForm from '@/components/dashboard/CreateProductForm';
 import Sidebar from '@/components/sidebar/Sidebar';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { Link } from 'react-router-dom';
 
 const BREADCRUMBS = [
     { id: 1, name: 'Dashboard', href: '/sell' },
-    { id: 2, name: 'My-Products', href: '/sell/my-products' }
+    { id: 2, name: 'My-Products', href: '/sell/my-products' },
+    { id: 3, name: 'Create', href: '/sell/my-products/create' }
 ];
 
-const MyProducts = () => {
+const CreateProducts = () => {
     return (
         <div className="flex min-h-screen w-full flex-row">
             <TooltipProvider>
                 <Sidebar />
             </TooltipProvider>
             <div className="p-6 flex flex-col w-full">
-                <ol className="flex items-center space-x-2 py-2">
+                <ol className="flex items-center space-x-2 py-2 mb-2">
                     {BREADCRUMBS.map((breadcrumb, i) => (
                         <li key={breadcrumb.href}>
                             <div className="flex items-center text-sm">
@@ -39,10 +41,10 @@ const MyProducts = () => {
                         </li>
                     ))}
                 </ol>
-                <ProductArea />
+                <CreateProductForm />
             </div>
         </div>
     );
 };
 
-export default MyProducts;
+export default CreateProducts;

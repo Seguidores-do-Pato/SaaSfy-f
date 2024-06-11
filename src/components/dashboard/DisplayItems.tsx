@@ -30,7 +30,7 @@ const DisplayItems = ({ index, isLoading, product }: DisplayItemsProps) => {
                     <TableCell>{product.category}</TableCell>
                     <TableCell>{product.version}</TableCell>
                     <TableCell>{product.available ? <Check className="text-primary" /> : <X className="text-red-900" />}</TableCell>
-                    <TableCell>{product.price}</TableCell>
+                    <TableCell>R$ {product.price}</TableCell>
                     <TableCell>{formatDate(product.createdAt)}</TableCell>
                     <TableCell>{formatDate(product.updatedAt)}</TableCell>
                 </TableRow>
