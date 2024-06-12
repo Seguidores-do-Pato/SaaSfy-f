@@ -1,4 +1,3 @@
-import MaxWidthWrapper from '@/components/MaxWidthWrapper';
 import CreateProductForm from '@/components/dashboard/CreateProductForm';
 import Sidebar from '@/components/sidebar/Sidebar';
 import { TooltipProvider } from '@/components/ui/tooltip';

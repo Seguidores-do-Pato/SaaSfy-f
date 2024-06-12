@@ -23,23 +23,6 @@ export function formatPrice(
     }).format(numericPrice);
 }
 
-export const imageToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            const base64String = reader.result as string;
-            resolve(base64String);
-        };
-
-        reader.onerror = error => {
-            reject(error);
-        };
-
-        reader.readAsDataURL(file);
-    });
-};
-
 export function base64ToImageUrl(base64String: string): string {
     const byteCharacters = atob(base64String);
     const byteNumbers = new Array(byteCharacters.length);

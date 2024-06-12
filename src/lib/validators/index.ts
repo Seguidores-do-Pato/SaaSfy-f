@@ -16,14 +16,15 @@ export const registerValidator = z.object({
 
 export const createProductValidator = z.object({
     name: z.string().min(1, { message: 'O nome deve ter pelo menos 1 caracter.' }),
-    version: z.string().default('1.0.0'),
+    version: z.string().default('1.0.0').optional(),
     description: z
         .string()
         .min(15, { message: 'A descrição deve ter pelo menos 15 caracteres.' })
         .max(255, { message: 'Permitido apenas 255 caracteres.' }),
-    owner: z.string(),
-    price: z.number().default(1),
-    category: z.string().default('Automation'),
+    owner: z.string().optional(),
+    image: z.string().array().optional(),
+    price: z.string(),
+    category: z.string().optional(),
     available: z.boolean().default(false),
     features: z.string().array().optional()
 });

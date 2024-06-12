@@ -1,12 +1,13 @@
-import { api } from './api';
+import axios from 'axios';
 
-export async function imageReader(imageBase64: string) {
+export async function imageReader(imageBase64: string | string[]) {
     try {
-        const { data } = await api.post(
+        const data = await axios.post(
             'http://localhost:11434/api/generate',
             {
                 model: 'llava',
-                prompt: 'Does this image contain any offensive content? Answer only with yes or no',
+                prompt: 'Does this image contain any offensive content? Answer only yes or no',
+                stream: false,
                 image: imageBase64
             },
             {
@@ -16,7 +17,7 @@ export async function imageReader(imageBase64: string) {
             }
         );
 
-        console.log(data);
+        return data;
     } catch (error) {
         console.error('Erro ao enviar a requisição:', error);
     }
