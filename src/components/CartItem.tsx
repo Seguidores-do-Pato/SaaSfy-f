@@ -10,7 +10,7 @@ const CartItem = ({ product }: { product: Product }) => {
             <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center space-x-4">
                     <div className="relative aspect-square h-16 w-16 min-w-fit overflow-hidden rounded">
-                        <img src="/software.png" alt={product.name} className="absolute object-cover" />
+                        <img src={product.images[0]} alt={product.name} className="absolute object-cover" />
                     </div>
 
                     <div className="flex flex-col self-start">

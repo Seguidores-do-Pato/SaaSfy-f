@@ -18,17 +18,16 @@ const BREADCRUMBS = [
 ];
 
 const Product = () => {
-    const slides = [
+    const { id } = useParams<params>();
+
+    const { data, isLoading } = useAPI<Product>(`${BASE_URL}/api/product/${id}`);
+
+    const slides = data?.images || [
         'https://www.searchenginejournal.com/wp-content/uploads/2023/08/best-landing-page-examples-64e6080f990bb-sej.png',
         'https://uizard.io/static/473c0ece225095e27a09412d4f1ef938/0cfa7/84f89a5abe3a18d4d3c5c672f00e76ce2943f0ca-1440x835.webp',
         'https://www.searchenginejournal.com/wp-content/uploads/2023/08/best-landing-page-examples-64e6080f990bb-sej.png',
         'https://uizard.io/static/473c0ece225095e27a09412d4f1ef938/0cfa7/84f89a5abe3a18d4d3c5c672f00e76ce2943f0ca-1440x835.webp'
     ];
-
-    const { id } = useParams<params>();
-
-    const { data, isLoading } = useAPI<Product>(`${BASE_URL}/api/product/${id}`);
-
     return (
         <MaxWidthWrapper>
             <div className="bg-white dark:bg-background">

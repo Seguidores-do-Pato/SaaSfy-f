@@ -33,7 +33,7 @@ const Page = () => {
                         {isMounted && items.length === 0 ? (
                             <div className="flex h-full flex-col items-center justify-center space-y-1">
                                 <div aria-hidden="true" className="relative mb-4 h-40 w-40 text-muted-foreground">
-                                    <img src="/empty-cart.png" className="w-full h-full" loading="eager" alt="empty shopping cart hippo" />
+                                    <img src="/empty-cart.png" className="w-full h-full" loading="eager" alt="empty shopping cart" />
                                 </div>
                                 <h3 className="font-semibold text-2xl">Ops! Nada para exibir por enquanto.</h3>
                                 <p className="text-muted-foreground text-center"></p>
@@ -51,7 +51,7 @@ const Page = () => {
                                         <li key={product._id} className="flex py-6 sm:py-10">
                                             <div className="flex-shrink-0">
                                                 <div className="relative h-24 w-24">
-                                                    <img src="/software.png" alt={product.name} className="absolute object-cover" />
+                                                    <img src={product.images[0]} alt={product.name} className="absolute object-cover" />
                                                 </div>
                                             </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from '../ui/input';
-import { ChevronLeft, Upload, X } from 'lucide-react';
+import { ChevronLeft, File, Upload, X } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '../ui/badge';
@@ -17,7 +17,7 @@ import { api } from '@/lib/api';
 import { imageReader } from '@/lib/imageReader';
 import { useToast } from '../ui/use-toast';
 import { Icons } from '../Icons';
-import { features } from 'process';
+import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group';
 
 const CreateProductForm = () => {
     const router = useNavigate();
@@ -32,9 +32,11 @@ const CreateProductForm = () => {
 
     const [available, setAvailable] = useState<boolean>(false);
     const [category, setCategory] = useState<string>('automation');
+    const [type, setType] = useState<string>('api');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [selectedImages, setSelectedImages] = useState<string[]>([]);
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
@@ -61,6 +63,17 @@ const CreateProductForm = () => {
 
     const removeImage = (index: number) => {
         setSelectedImages(prevImages => prevImages.filter((_, i) => i !== index));
+    };
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {
+            setSelectedFiles(Array.from(event.target.files));
+        }
+    };
+
+    const removeFile = (index: number) => {
+        const newSelectedFiles = selectedFiles.filter((_, i) => i !== index);
+        setSelectedFiles(newSelectedFiles);
     };
 
     const onSubmit = async (props: TcreateProduct) => {
@@ -116,8 +129,6 @@ const CreateProductForm = () => {
             });
             setIsLoading(false);
         }
-
-        console.log(status);
     };
 
     return (
@@ -246,6 +257,52 @@ const CreateProductForm = () => {
                                 </div>
                             </CardContent>
                         </Card>
+                        <Card>
+                            <CardHeader className="gap-y-2">
+                                <CardTitle>Conteúdo do Produto</CardTitle>
+                                <ToggleGroup type="single" defaultValue="api" variant="outline" onValueChange={value => setType(value)}>
+                                    <ToggleGroupItem value="api">API Key</ToggleGroupItem>
+                                    <ToggleGroupItem value="files">Arquivos</ToggleGroupItem>
+                                </ToggleGroup>
+                            </CardHeader>
+                            <CardContent>
+                                {type === 'api' && (
+                                    <>
+                                        <Label>API Key</Label>
+                                        <Input />
+                                    </>
+                                )}
+                                {type === 'files' && (
+                                    <div className="flex flex-col items-center justify-center p-4  border rounded-lg shadow-md">
+                                        <label
+                                            htmlFor="file-upload"
+                                            className="cursor-pointer p-3 rounded-md text-gray-900 dark:text-white bg-zinc-200 dark:bg-gray-900"
+                                        >
+                                            Selecionar Arquivos
+                                        </label>
+                                        <input id="file-upload" type="file" className="hidden" multiple onChange={handleFileChange} />
+                                        {selectedFiles.length > 0 && (
+                                            <div className="mt-2 text-sm ">
+                                                <p className="font-semibold">Arquivos selecionados:</p>
+                                                <ul className="list-disc list-inside">
+                                                    {selectedFiles.map((file, index) => (
+                                                        <li key={index} className="flex items-center text-primary">
+                                                            {file.name}
+                                                            <button
+                                                                className="ml-2 px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
+                                                                onClick={() => removeFile(index)}
+                                                            >
+                                                                Remover
+                                                            </button>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </CardContent>
+                        </Card>
                         <Card className="overflow-hidden">
                             <CardHeader>
                                 <CardTitle>Imagens</CardTitle>
@@ -286,7 +343,6 @@ const CreateProductForm = () => {
                                 Descartar
                             </Button>
                             <Button size="sm" type="submit" disabled={isLoading}>
-                                Criar
                                 {isLoading ? <Icons.spinner className="mr-2 h-5 w-5 animate-spin" /> : 'Criar'}
                             </Button>
                         </div>

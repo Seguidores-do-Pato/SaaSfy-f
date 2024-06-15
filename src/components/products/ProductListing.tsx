@@ -13,7 +13,7 @@ interface ProductListingProps {
 const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
-    const urls = ['/software.png', '/software.png'];
+    const urls = product?.images || ['/software.png', '/software.png'];
 
     useEffect(() => {
         const timer = setTimeout(() => {
