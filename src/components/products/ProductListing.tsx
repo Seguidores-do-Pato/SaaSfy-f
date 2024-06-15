@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductPlaceholder from './ProductPlaceholder';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
-import { Separator } from '../ui/separator';
-import { Button } from '../ui/button';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { cn, formatPrice } from '@/lib/utils';
 import ImageSlider from './ImageSlider';
 
@@ -16,8 +13,7 @@ interface ProductListingProps {
 const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
-    const router = useNavigate();
-    const urls = ['/software.png', '/software.png'];
+    const urls = product?.images || ['/software.png', '/software.png'];
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -37,7 +33,7 @@ const ProductListing = ({ index, product, isLoading }: ProductListingProps) => {
                 className={cn('invisible h-full w-full cursor-pointer group/main', {
                     'visible animate-in fade-in-5': isVisible
                 })}
-                to={`/product/${product._id}`}
+                to={`/products/${product._id}`}
             >
                 <div className="flex flex-col w-full">
                     <ImageSlider urls={urls} />

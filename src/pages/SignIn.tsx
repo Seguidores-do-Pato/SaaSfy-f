@@ -45,6 +45,7 @@ const SignInPage = () => {
                     title: 'Email ou Senha inválidos',
                     description: 'Por favor, tente novamente.'
                 });
+                setIsLoading(false);
             });
     };
 

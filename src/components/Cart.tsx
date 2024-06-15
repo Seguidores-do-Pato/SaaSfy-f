@@ -4,31 +4,51 @@ import { Separator } from './ui/separator';
 import { formatPrice } from '@/lib/utils';
 import { Button, buttonVariants } from './ui/button';
 import { Link } from 'react-router-dom';
+import { useCart } from '@/hooks/useCart';
+import { useEffect, useState } from 'react';
+import { ScrollArea } from './ui/scroll-area';
+import CartItem from './CartItem';
 
 const Cart = () => {
-    const itemCount = 0;
+    const [isMounted, setIsMounted] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    const { items } = useCart();
+
+    const itemCount = items.length;
+
+    const cartTotal = items.reduce((total, { product }) => total + product.price, 0);
 
     return (
         <Sheet>
             <SheetTrigger className="group -m-2 flex items-center p-1">
                 <Button variant="ghost" className="flex-shrink-0">
                     <ShoppingCart className="h-6 w-6" />
-                    <span className="ml-2 text-sm font-medium">0</span>
+                    <span className="ml-2 text-sm font-medium">{isMounted ? itemCount : 0}</span>
                 </Button>
             </SheetTrigger>
             <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
                 <SheetHeader className="space-y-2.5 pr-6">
-                    <SheetTitle>Carrinho (0)</SheetTitle>
+                    <SheetTitle>Carrinho ({itemCount})</SheetTitle>
                 </SheetHeader>
                 {itemCount > 0 ? (
                     <>
-                        <div className="flex w-full flex-col pr-6">Cart items</div>
+                        <div className="flex w-full flex-col pr-6">
+                            <ScrollArea>
+                                {items.map(({ product }) => (
+                                    <CartItem product={product} key={product._id} />
+                                ))}
+                            </ScrollArea>
+                        </div>
                         <div className="space-y-4 pr-6">
                             <Separator />
                             <div className="space-y-1.5 text-sm">
                                 <div className="flex">
                                     <span className="flex-1">Total</span>
-                                    <span>{formatPrice(1)}</span>
+                                    <span>{formatPrice(cartTotal)}</span>
                                 </div>
                             </div>
                             <SheetFooter>

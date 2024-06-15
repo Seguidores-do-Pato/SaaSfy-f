@@ -7,6 +7,7 @@ import { buttonVariants } from '../ui/button';
 import { ToggleTheme } from '../ToggleTheme';
 import NavMenu from './NavMenu';
 import NavAccount from './NavAccount';
+import MobileNav from './MobileNav';
 
 const Narbar = () => {
     const { User } = useAuth();
@@ -16,6 +17,7 @@ const Narbar = () => {
                 <MaxWidthWrapper>
                     <div className="border-b border-gray-200 dark:border-gray-800 bg-background">
                         <div className="flex h-16 items-center">
+                            <MobileNav />
                             <div className="ml-4 flex lg:ml-0">
                                 <Link to="/" className="flex items-center gap-2">
                                     <Icons.logo className="w-10 h-10" />

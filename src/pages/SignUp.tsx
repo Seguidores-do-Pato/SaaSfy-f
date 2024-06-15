@@ -43,6 +43,7 @@ const SignUpPage = () => {
                     title: 'Email ou Senha inválidos',
                     description: 'Por favor, tente novamente.'
                 });
+                setIsLoading(false);
             });
     };
 
@@ -94,11 +95,11 @@ const SignUpPage = () => {
                                 <Input
                                     {...register('name')}
                                     className={cn({
-                                        'focus-visible:ring-red-500': errors.email
+                                        'focus-visible:ring-red-500': errors.name
                                     })}
                                     placeholder="Seu nome completo"
                                 />
-                                {errors?.email && <p className="text-sm text-red-500">{errors.email.message}</p>}
+                                {errors?.name && <p className="text-sm text-red-500">{errors.name.message}</p>}
                             </div>
                             {/* password field */}
                             <div className="grid gap-1 py-2">

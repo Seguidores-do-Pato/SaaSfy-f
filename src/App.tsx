@@ -9,6 +9,9 @@ import Profile from './pages/Profile';
 import Products from './pages/Products';
 import MyProducts from './pages/MyProducts';
 import Product from './pages/Product';
+import Checkout from './pages/Checkout';
+import Footer from './components/Footer';
+import CreateProducts from './pages/CreateProducts'
 
 function App() {
     return (
@@ -19,10 +22,12 @@ function App() {
                     <>
                         <Narbar />
                         <Outlet />
+                        <Footer />
                     </>
                 }
             >
                 <Route index element={<Home />} />
+                <Route path="/cart" element={<Checkout />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<Product />} />
                 <Route path="/profile" element={<PrivateRoutes />}>
@@ -36,6 +41,7 @@ function App() {
             <Route path="/sell" element={<PrivateRoutes />}>
                 <Route index element={<Dashboard />} />
                 <Route path="/sell/my-products" element={<MyProducts />} />
+                <Route path="/sell/my-products/create" element={<CreateProducts/>} />
             </Route>
         </Routes>
     );
